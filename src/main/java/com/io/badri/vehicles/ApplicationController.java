@@ -9,9 +9,14 @@ public class ApplicationController {
 	/*
 	 * mapping for home admin page /index
 	 */
-
+	@GetMapping("/")
+	public String showHomePage() {
+		return "index"; // redirects to index.html from /template/index.html
+	}
+	
 	@GetMapping("/index")
 	public String homePage() {
 		return "index"; // redirects to index.html from /template/index.html
 	}
+	
 }

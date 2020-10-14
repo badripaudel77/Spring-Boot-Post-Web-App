@@ -402,7 +402,30 @@
         <!-- page start-->
         
         <!--  Page content goes here -->
-         <h2>All countries</h2>
+         <h2>All countries <hr /> </h2>
+         <!-- display countries in table formate -->
+         <table class="table table-condensed">
+    <thead>
+      <tr>
+       <th>ID</th>
+        <th>Capital</th>
+        <th>Code</th>
+        <th>Continent</th>
+        <th>Description</th>
+        <th>Nationality</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="country : ${countries}">
+        <td th:text = "${country.id}"></td>
+        <td th:text = "${country.capital}"></td>
+        <td th:text = "${country.code}"></td>
+        <td th:text = "${country.continent}"></td>
+        <td th:text = "${country.description}"></td>
+        <td th:text = "${country.nationality}"></td>
+      </tr>
+    </tbody>
+  </table>
         <!-- page end-->
       </section>
     </section>
@@ -415,7 +438,6 @@
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
           -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
   </section>
