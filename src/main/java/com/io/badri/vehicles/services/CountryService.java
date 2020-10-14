@@ -14,8 +14,13 @@ public class CountryService {
 	@Autowired
 	private CountryRepository countryRepository;
 	
+	//get all countries
 	public List<Country> getCountries() {
 		return countryRepository.findAll(); 
 	}
 
+	//save new country to the database
+	public void addCountry(Country country) {
+		countryRepository.save(country);
+	}
 }
