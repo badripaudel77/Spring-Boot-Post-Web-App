@@ -399,10 +399,53 @@
             </ol>
           </div>
         </div>
-        <!-- page start-->
-        
-        <!--  Page content goes here -->
-         <h2>state</h2>
+            <!-- page start-->
+            <!-- page start-->
+		    <!--  Page content goes here -->
+				<h2>
+					All states
+					<hr />
+				</h2>
+				<a type="button" class="btn btn-primary" 
+					    th:href="@{/states/showFormForAdd}"
+			    >Add State</a>             
+				<!-- display states in table formate -->
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Capital</th>
+							<th>Code</th>
+							<th>Country ID</th>
+							<th>Details</th>
+							<th>Name</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="state : ${states}">
+							<td th:text="${state.id}"></td>
+							<td th:text="${state.capital}"></td>
+							<td th:text="${state.code}"></td>
+							<td th:text="${state.countryid}"></td>
+							<td th:text="${state.details}"></td>
+							<td th:text="${state.name}"></td>
+							<!-- edit delete actions icons -->
+							<td>
+							   <div class="btn btn-group">
+							        <a th:href="@{/states/showFormForUpdate(stateId=${state.id})}" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
+							        <a th:href="@{/states/deleteState(stateId=${state.id})}"  
+							           class="btn btn-danger"
+							           onclick="return confirm('are you sure to delete ?')"
+							        >
+							        <i class="icon_close_alt2"></i>
+							        </a>
+							   </div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- page end-->
         <!-- page end-->
       </section>
     </section>

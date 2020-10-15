@@ -32,12 +32,7 @@
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
 
-<!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
+
 </head>
 
 <body>
@@ -333,10 +328,7 @@
 				</h2>
 				<a type="button" class="btn btn-primary" 
 					    th:href="@{/countries/showFormForAdd}"
-			    >Add Country</a>
-			  
-              	
-             
+			    >Add Country</a>             
 				<!-- display countries in table formate -->
 				<table class="table table-condensed">
 					<thead>
@@ -361,11 +353,13 @@
 							<!-- edit delete actions icons -->
 							<td>
 							   <div class="btn btn-group">
-							        <a th:href="@{/countries/showFormForUpdate(countryId=${country.id})}" class="btn btn-primary">Edit</a>
+							        <a th:href="@{/countries/showFormForUpdate(countryId=${country.id})}" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
 							        <a th:href="@{/countries/deleteCountry(countryId=${country.id})}"  
 							           class="btn btn-danger"
 							           onclick="return confirm('are you sure to delete ?')"
-							        >Delete</a>
+							        >
+							        <i class="icon_close_alt2"></i>
+							        </a>
 							   </div>
 							</td>
 						</tr>

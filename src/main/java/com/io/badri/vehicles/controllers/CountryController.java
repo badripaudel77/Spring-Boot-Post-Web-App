@@ -6,12 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.io.badri.vehicles.models.Country;
 import com.io.badri.vehicles.services.CountryService;
@@ -34,7 +32,7 @@ public class CountryController {
 		Country country = new Country();
 		
 	 model.addAttribute("country", country);
-	 return "CountryForm";
+	 return "forms/CountryForm";
 	}
 	
 	@PostMapping("/countries/addNew")
@@ -56,7 +54,7 @@ public class CountryController {
 			model.addAttribute("country", country);
 		
 		   //send to form
-		   return "CountryForm";
+		   return "forms/CountryForm";
 	}
 	
 	@GetMapping("/countries/deleteCountry")
