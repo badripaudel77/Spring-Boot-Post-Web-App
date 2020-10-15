@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
 
 <head>
 <meta charset="utf-8">
@@ -331,59 +331,12 @@
 					All countries
 					<hr />
 				</h2>
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#addCountryModal">Add Country</button>
-				<!-- modal popup -->
-				<div class="modal fade" id="addCountryModal" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="addCountryModal">Add Country</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form th:action = "@{/countries/addNew}" method = "post">
-									<div class="form-group">
-										<label for="capital" class="col-form-label">Capital</label>
-										<input type="text" class="form-control" name= "capital" id="capital">
-									</div>
-									<div class="form-group">
-										<label for="code" class="col-form-label">Code</label>
-										<input type="text" class="form-control" name = "code" id="code">
-									</div>
-									<div class="form-group">
-										<label for="continent" class="col-form-label">Continent</label>
-										<input type="text" class="form-control" name ="continent" id="continent">
-									</div>
-									<div class="form-group">
-										<label for="description" class="col-form-label">Description</label>
-										<input type="text" class="form-control" name="description" id="description">
-									</div>
-									<div class="form-group">
-										<label for="nationality" class="col-form-label">Nationality</label>
-										<input type="text" class="form-control" name="nationality" id="nationality">
-									</div>
-									
-									<div class="form-group">
-									    <button type="submit" class="btn btn-primary">Add</button>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Cancel</button>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-              <!-- modal popup ended-->
-
+				<a type="button" class="btn btn-primary" 
+					    th:href="@{/countries/showFormForAdd}"
+			    >Add Country</a>
+			  
+              	
+             
 				<!-- display countries in table formate -->
 				<table class="table table-condensed">
 					<thead>
@@ -394,6 +347,7 @@
 							<th>Continent</th>
 							<th>Description</th>
 							<th>Nationality</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -404,6 +358,16 @@
 							<td th:text="${country.continent}"></td>
 							<td th:text="${country.description}"></td>
 							<td th:text="${country.nationality}"></td>
+							<!-- edit delete actions icons -->
+							<td>
+							   <div class="btn btn-group">
+							        <a th:href="@{/countries/showFormForUpdate(countryId=${country.id})}" class="btn btn-primary">Edit</a>
+							        <a th:href="@{/countries/deleteCountry(countryId=${country.id})}"  
+							           class="btn btn-danger"
+							           onclick="return confirm('are you sure to delete ?')"
+							        >Delete</a>
+							   </div>
+							</td>
 						</tr>
 					</tbody>
 				</table>

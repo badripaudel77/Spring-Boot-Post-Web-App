@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
 
 <head>
 <meta charset="utf-8">
@@ -14,7 +14,7 @@
 <title>Admin Panel</title>
 
 <!-- Bootstrap CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <!-- bootstrap theme -->
 <link href="css/bootstrap-theme.css" rel="stylesheet">
 <!--external css-->
@@ -61,7 +61,7 @@
 			</div>
 
 			<!--logo start-->
-			<a href="index.html" class="logo">Vehicles <span class="lite">Management
+			<a th:href="@{/index}" class="logo">Vehicles <span class="lite">Management
 					Admin</span></a>
 			<!--logo end-->
 

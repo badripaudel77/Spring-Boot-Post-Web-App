@@ -1,0 +1,171 @@
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
+
+<title>countries management</title>
+
+Bootstrap CSS
+<link href="css/bootstrap.min.css" rel="stylesheet">
+bootstrap theme
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+external css
+font icon
+<link href="css/elegant-icons-style.css" rel="stylesheet" />
+<link href="css/font-awesome.min.css" rel="stylesheet" />
+Custom styles
+<link href="css/style.css" rel="stylesheet">
+<link href="css/style-responsive.css" rel="stylesheet" />
+
+
+
+
+</head>
+
+<body>
+	modal popup
+				<div class="modal fade" id="addCountryModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="addCountryModal">Add Country</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form th:action = "@{/countries/addNew}" method = "post">
+									<div class="form-group">
+										<label for="capital" class="col-form-label">Capital</label>
+										<input type="text" class="form-control" name= "capital" id="capital">
+									</div>
+									<div class="form-group">
+										<label for="code" class="col-form-label">Code</label>
+										<input type="text" class="form-control" name = "code" id="code">
+									</div>
+									<div class="form-group">
+										<label for="continent" class="col-form-label">Continent</label>
+										<input type="text" class="form-control" name ="continent" id="continent">
+									</div>
+									<div class="form-group">
+										<label for="description" class="col-form-label">Description</label>
+										<input type="text" class="form-control" name="description" id="description">
+									</div>
+									<div class="form-group">
+										<label for="nationality" class="col-form-label">Nationality</label>
+										<input type="text" class="form-control" name="nationality" id="nationality">
+									</div>
+									
+									<div class="form-group">
+									    <button type="submit" class="btn btn-primary">Add</button>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancel</button>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+              modal popup ended
+
+</body>
+
+</html>
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<h2>Save Country</h2>
+		<form class="form-horizontal" th:object="${country}"
+			th:action="@{/countries/addNew}" method="post">
+			
+			<!-- hidden input id -->
+			<input type="hidden" th:field="*{id}" class="form-control"
+						name="id" id="id" />
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="capital">Capital:</label>
+				<div class="col-sm-10">
+
+					<input type="text" th:field="*{capital}" class="form-control"
+						name="capital" id="capital">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="code">Code:</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{code}" class="form-control"
+						name="code" id="code">
+
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for="continent">Continent:</label>
+				<div class="col-sm-10">
+
+					<input type="text" th:field="*{continent}" class="form-control"
+						name="continent" id="continent">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="description">Description:</label>
+				<div class="col-sm-10">
+
+					<input type="text" th:field="*{description}" class="form-control"
+						name="description" id="description">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nationality">Nationality:</label>
+				<div class="col-sm-10">
+
+					<input type="text" th:field="*{nationality}" class="form-control"
+						name="nationality" id="nationality">
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<div class="col-sm-10">
+					<label class="control-label col-sm-2" for="nationality"></label>
+					<button type="submit" class="btn btn-primary">Save</button>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+</body>
+</html>
