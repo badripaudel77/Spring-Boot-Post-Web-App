@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -27,6 +28,7 @@ public class Country {
 	private String nationality;
 	private String continent;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="country")
 	private List<State> states;
 	
@@ -99,10 +101,10 @@ public class Country {
 		this.states = states;
 	}
 
-	@Override
-	public String toString() {
-		return "Country [id=" + id + ", code=" + code + ", capital=" + capital + ", description=" + description
-				+ ", nationality=" + nationality + ", continent=" + continent + ", states=" + states + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Country [id=" + id + ", code=" + code + ", capital=" + capital + ", description=" + description
+//				+ ", nationality=" + nationality + ", continent=" + continent + ", states=" + states + "]";
+//	}
 	
 }

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -21,7 +22,8 @@ public class State {
 	private String capital;
     private String code;
 
-	@ManyToOne
+    @JsonBackReference
+    @ManyToOne
 	@JoinColumn(name="countryid", insertable=false, updatable=false)
 	private Country country;
 	
@@ -98,10 +100,10 @@ public class State {
 		this.details = details;
 	}
 
-	@Override
-	public String toString() {
-		return "State [id=" + id + ", name=" + name + ", capital=" + capital + ", code=" + code + ", country=" + country
-				+ ", countryid=" + countryid + ", details=" + details + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "State [id=" + id + ", name=" + name + ", capital=" + capital + ", code=" + code + ", country=" + country
+//				+ ", countryid=" + countryid + ", details=" + details + "]";
+//	}
 	
 }

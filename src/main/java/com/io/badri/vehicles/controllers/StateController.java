@@ -18,64 +18,66 @@ import com.io.badri.vehicles.services.StateService;
 
 @Controller
 public class StateController {
-	
+
 	@Autowired
 	private StateService stateService;
-	
+
 	@Autowired
 	private CountryService countryService;
-	
+
 	@GetMapping("/states")
 	public String getStates(Model model) {
 		List<State> stateList = stateService.getStates();
-		
+
 		model.addAttribute("states", stateList);
 		return "State";
 	}
-	@GetMapping("/states/showFormForAdd") 
-	public String showFormForAdd(Model model){
-		
-			List<Country> countryList = countryService.getCountries();
-			
-			model.addAttribute("countries", countryList);
 
-		    State state = new State();
-	        model.addAttribute("state", state);
-	        
-	        return "forms/StateForm";
+	@GetMapping("/states/showFormForAdd")
+	public String showFormForAdd(Model model) {
+
+		List<Country> countryList = countryService.getCountries();
+
+		model.addAttribute("countries", countryList);
+
+		State state = new State();
+		model.addAttribute("state", state);
+
+		return "forms/StateForm";
 	}
-	
+
 	@PostMapping("/states/addNew")
-	//state is in th:object = 
-	public String addState(@ModelAttribute("state") State state) {
+	// state is in th:object =
+	public String addState(@ModelAttribute("state") State state, Model model) {
 		stateService.addState(state);
-        
-		//redirect to the list and prevent duplicate submission.
+		// redirect to the list and prevent duplicate submission.
 		return "redirect:/states";
 	}
-	
+
 	@GetMapping("/states/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("stateId") int stateId, Model model) {
-		   // get the state for that state id
-            // System.out.println("update" + stateId);
-		   Optional<State> state = stateService.getStateById(stateId);		    
-		   
-		   //set state as model to pre-populate the form
-			model.addAttribute("state", state);
-		
-		   //send to form
-		   return "forms/StateForm";
+		// get the state for that state id
+		// System.out.println("update" + stateId);
+		Optional<State> state = stateService.getStateById(stateId);
+
+		// set state as model to pre-populate the form
+		model.addAttribute("state", state);
+
+		// has to populate country select drop down.
+		model.addAttribute("countries", countryService.getCountries());
+
+		// send to form
+		return "forms/StateForm";
 	}
-	
+
 	@GetMapping("/states/deleteState")
 	public String deleteState(@RequestParam("stateId") int stateId, Model model) {
-		   System.out.println("delete" + stateId);
-		   Optional<State> state = stateService.getStateById(stateId);		    
-		   
-		   if(state !=null) {
-			   stateService.deleteState(stateId);
-		   }
+		System.out.println("delete" + stateId);
+		Optional<State> state = stateService.getStateById(stateId);
+
+		if (state != null) {
+			stateService.deleteState(stateId);
+		}
 		return "redirect:/states";
 	}
 }
-
