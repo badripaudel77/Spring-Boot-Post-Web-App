@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.io.badri.vehicles.models.Country;
 import com.io.badri.vehicles.models.State;
+import com.io.badri.vehicles.services.CountryService;
 import com.io.badri.vehicles.services.StateService;
 
 @Controller
@@ -19,6 +21,9 @@ public class StateController {
 	
 	@Autowired
 	private StateService stateService;
+	
+	@Autowired
+	private CountryService countryService;
 	
 	@GetMapping("/states")
 	public String getStates(Model model) {
@@ -29,10 +34,15 @@ public class StateController {
 	}
 	@GetMapping("/states/showFormForAdd") 
 	public String showFormForAdd(Model model){
-		State state = new State();
 		
-	    model.addAttribute("state", state);
-	    return "forms/StateForm";
+			List<Country> countryList = countryService.getCountries();
+			
+			model.addAttribute("countries", countryList);
+
+		    State state = new State();
+	        model.addAttribute("state", state);
+	        
+	        return "forms/StateForm";
 	}
 	
 	@PostMapping("/states/addNew")

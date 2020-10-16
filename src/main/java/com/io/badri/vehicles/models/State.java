@@ -33,7 +33,6 @@ public class State {
 
 	public State(Integer id, String name, String capital, String code, Country country, Integer countryid,
 			String details) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.capital = capital;
