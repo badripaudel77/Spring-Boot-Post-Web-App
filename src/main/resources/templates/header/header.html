@@ -223,7 +223,10 @@
 					<!-- user login dropdown start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
-								<img alt="" src="img/avatar1_small.jpg">
+						<!-- adding image dynamically -->
+								<img alt="R" 
+								th:src=" @{'/img/photos/' + ${#authentication.getPrincipal().getUsername()} + '.jpg'}"
+								 height = "37" width = "37">
 								<!--
 								    display the username of the logged in user dynamically 
 								    ${#authenticatio.getPrincipal().getUsername()}
