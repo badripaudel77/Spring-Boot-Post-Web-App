@@ -19,4 +19,13 @@ public class ApplicationController {
 		return "index"; // redirects to index.html from /template/index.html
 	}
 	
+	@GetMapping("/login")
+	public String loginPage() {
+		return "forms/login"; // redirects to index.html from /template/index.html
+	}
+	
+	@GetMapping("/logout")
+	public String logout() {
+		return "forms/login"; // redirects to index.html from /template/index.html
+	}
 }

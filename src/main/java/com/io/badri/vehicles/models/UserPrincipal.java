@@ -1,6 +1,5 @@
 package com.io.badri.vehicles.models;
 
-
 import java.util.Collection;
 import java.util.Collections;
 
@@ -8,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+//user principal for user login , spring security.
 public class UserPrincipal implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;

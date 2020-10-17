@@ -19,13 +19,13 @@
 			th:action="@{/locations/addNew}" method="post">
 
 			<!-- hidden input id -->
-			<input type="hidden" th:field="*{id}" class="form-control" name="id"
+			<input type="hidden" required th:field="*{id}" class="form-control" name="id"
 				id="id" />
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="capital">Address:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{address}" class="form-control"
+					<input type="text" required th:field="*{address}" class="form-control"
 						name="address" id="address">
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="code">City:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{city}" class="form-control"
+					<input type="text" required th:field="*{city}" class="form-control"
 						name="city" id="city">
 				</div>
 			</div>
@@ -45,9 +45,9 @@
 					<!-- <input type="text" th:field="*{countryid}" class="form-control"
 						name="countryid" id="countryid"> --> 
 						
-					<select class="form-control" name = "countryid" id="countryid" th:field="*{countryid}">
+					<select required class="form-control" name = "countryid" id="countryid" th:field="*{countryid}">
 						<option value="" >Select Country</option>
-						<option th:each = "country : ${countries}"
+						<option  th:each = "country : ${countries}"
 					        	th:value="${country.id}"
 					        	th:text= "${country.description}"></option>
 					</select>
@@ -60,7 +60,7 @@
 					<!-- <input type="text" th:field="*{countryid}" class="form-control"
 						name="countryid" id="countryid"> --> 
 						
-					<select class="form-control" name = "stateid" id="countryid" th:field="*{stateid}">
+					<select required class="form-control" name = "stateid" id="countryid" th:field="*{stateid}">
 						<option value="" >Select State</option>
 						<option th:each = "state : ${states}"
 					        	th:value="${state.id}"
@@ -72,7 +72,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="name">Description:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{description}" class="form-control"
+					<input type="text" required th:field="*{description}" class="form-control"
 						name="description" id="description">
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="details">Details:</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{details}" class="form-control"
+					<input type="text" required th:field="*{details}" class="form-control"
 						name="details" id="details">
 				</div>
 			</div>

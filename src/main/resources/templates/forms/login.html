@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+<head>
+<title>Login Form || Spring Boot Application</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+   .container {
+      width : 50%;
+      border : 2px solid orange;
+      background-color : gray;
+      color : white;
+      margin-top : 100px;
+   }
+  
+</style>
+
+<body>
+
+	<div class="container">
+		<h2>Login To Proceed.</h2>
+		<form class="form-horizontal"
+			th:action="@{/login}" method="post">
+			
+			<!-- hidden input id -->
+			<!-- <input type="hidden" class="form-control"
+						name="id" id="id" /> -->
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="username">Username:</label>
+				<div class="col-sm-10">
+
+					<input autocomplete="false" required type="text" class="form-control"
+						name="username" id="username">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="code">Password:</label>
+				<div class="col-sm-10">
+					<input required type="password" class="form-control"
+						name="password" id="password">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="control-label col-sm-2" for="login"></label>
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
