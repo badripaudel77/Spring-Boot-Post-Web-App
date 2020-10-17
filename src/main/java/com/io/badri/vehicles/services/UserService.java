@@ -3,6 +3,7 @@ package com.io.badri.vehicles.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.io.badri.vehicles.models.User;
@@ -13,9 +14,16 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	//save new user to the database
 	public void addUser(User user) {
+		//before saving encode password and save it
+		String plainPassword = user.getPassword();
+		user.setPassword(bCryptPasswordEncoder.encode(plainPassword));
+		
 		userRepository.save(user);
 	}
 	
