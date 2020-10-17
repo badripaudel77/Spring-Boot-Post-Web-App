@@ -224,7 +224,11 @@
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
 								<img alt="" src="img/avatar1_small.jpg">
-						</span> <span class="username">badri</span> <b class="caret"></b>
+								<!--
+								    display the username of the logged in user dynamically 
+								    ${#authenticatio.getPrincipal().getUsername()}
+								 -->
+						</span> <span class="username" th:text = "${#authentication.getPrincipal().getUsername()}">Guest</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu extended logout">
 							<div class="log-arrow-up"></div>
