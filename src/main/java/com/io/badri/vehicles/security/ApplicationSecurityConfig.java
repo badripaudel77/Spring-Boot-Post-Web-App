@@ -26,6 +26,8 @@ extends WebSecurityConfigurerAdapter  {
 		.authorizeRequests()
 		.antMatchers(
 				"/login", 
+				"/register",
+				"/users/register",
 				"/resources/**", 
 				"/css/**", 
 				"/fonts/**", 

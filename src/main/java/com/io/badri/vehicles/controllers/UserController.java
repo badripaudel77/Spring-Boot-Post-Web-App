@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.io.badri.vehicles.models.User;
 import com.io.badri.vehicles.services.UserService;
@@ -19,21 +21,26 @@ public class UserController {
 	@Autowired
 	private UserService userService;	
 
-	@GetMapping("/users/showFormForAdd") 
-	public String showFormForAdd(Model model){
-		User user = new User();
-		
-	    model.addAttribute("user", user);
-	    return "forms/login";
-	}
+// already done by ApplicationController
+//	@GetMapping("/users/showFormForAdd") 
+//	public String showFormForAdd(Model model){
+//		User user = new User();
+//		
+//	    model.addAttribute("user", user);
+//	    return "forms/login";
+//	}
 	
-	@PostMapping("/users/addNew")
+	@PostMapping("/users/register")
 	//user is in th:object = 
-	public String addUser(@ModelAttribute("user") User user) {
+	public RedirectView addUser(@ModelAttribute("user") User user, RedirectAttributes redirectAtr) {
 		userService.addUser(user);
         
-		//redirect to the list and prevent duplicate submission.
-		return "redirect:/index";
+      // extra to send message 		
+		RedirectView rView = new RedirectView("/login", true);
+		
+		redirectAtr.addFlashAttribute("loginMessage", "You are registered successfully");
+			
+		return rView;
 	}
 	
 	@GetMapping("/users/showFormForUpdate")
