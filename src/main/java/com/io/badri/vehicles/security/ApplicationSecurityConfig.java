@@ -27,6 +27,8 @@ extends WebSecurityConfigurerAdapter  {
 				"/login", 
 				"/register",
 				"/users/register",
+				"/normalusers/login",
+				"/normalusers/register",
 				"/resources/**", 
 				"/css/**", 
 				"/fonts/**", 

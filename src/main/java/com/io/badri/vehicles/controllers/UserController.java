@@ -20,15 +20,6 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;	
-
-// already done by ApplicationController
-//	@GetMapping("/users/showFormForAdd") 
-//	public String showFormForAdd(Model model){
-//		User user = new User();
-//		
-//	    model.addAttribute("user", user);
-//	    return "forms/login";
-//	}
 	
 	@PostMapping("/users/register")
 	//user is in th:object = 
