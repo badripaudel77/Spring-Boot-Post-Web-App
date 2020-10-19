@@ -14,10 +14,12 @@ public class ApplicationController {
 		return "index"; // redirects to index.html from /template/index.html
 	}
 	
+	/*
 	@GetMapping("/admin/index")
 	public String homePage() {
 		return "index"; // redirects to index.html from /template/index.html
 	}
+	*/
 	
 	@GetMapping("/admin/register")
 	public String registerPage() {
