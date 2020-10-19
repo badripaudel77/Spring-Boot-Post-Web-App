@@ -2,7 +2,6 @@ package com.io.badri.vehicles.controllers;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,7 @@ public class LocationController {
 	@Autowired
 	private StateService stateService;
 
-	@GetMapping("/locations")
+	@GetMapping("/admin/locations")
 	public String getLocations(Model model) {
 		List<Location> locationList = locationService.getLocations();
 
@@ -38,7 +37,7 @@ public class LocationController {
 		return "Location";
 	}
 
-	@GetMapping("/locations/showFormForAdd")
+	@GetMapping("/admin/locations/showFormForAdd")
 	public String showFormForAdd(Model model) {
 
 		List<Country> countryList = countryService.getCountries();
@@ -53,15 +52,15 @@ public class LocationController {
 		return "forms/LocationForm";
 	}
 
-	@PostMapping("/locations/addNew")
+	@PostMapping("/admin/locations/addNew")
 	// location is in th:object =
 	public String addLocation(@ModelAttribute("location") Location location, Model model) {
 		locationService.addLocation(location);
 		// redirect to the list and prevent duplicate submission.
-		return "redirect:/locations";
+		return "redirect:/admin/locations";
 	}
 
-	@GetMapping("/locations/showFormForUpdate")
+	@GetMapping("/admin/locations/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("locationId") int locationId, Model model) {
 		// get the location for that location id
 		// System.out.println("update" + locationId);
@@ -79,7 +78,7 @@ public class LocationController {
 		return "forms/LocationForm";
 	}
 
-	@GetMapping("/locations/deleteLocation")
+	@GetMapping("/admin/locations/deleteLocation")
 	public String deleteLocation(@RequestParam("locationId") int locationId, Model model) {
 		System.out.println("delete" + locationId);
 		Optional<Location> location = locationService.getLocationById(locationId);
@@ -87,6 +86,6 @@ public class LocationController {
 		if (location != null) {
 			locationService.deleteLocation(locationId);
 		}
-		return "redirect:/locations";
+		return "redirect:/admin/locations";
 	}
 }

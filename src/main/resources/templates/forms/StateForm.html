@@ -16,7 +16,7 @@
 	<div class="container">
 		<h2>Save State</h2>
 		<form class="form-horizontal" th:object="${state}"
-			th:action="@{/states/addNew}" method="post">
+			th:action="@{/admin/states/addNew}" method="post">
 
 			<!-- hidden input id -->
 			<input type="hidden" readonly th:field="*{id}" class="form-control" name="id"

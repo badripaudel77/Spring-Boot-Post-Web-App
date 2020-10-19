@@ -39,7 +39,7 @@
 		</div>
 		
 		<form class="form-horizontal"
-			th:action="@{/login}" method="post">
+			th:action="@{/admin/login}" method="post">
 			
 			<!-- hidden input id -->
 			<!-- <input type="hidden" class="form-control"
@@ -65,7 +65,7 @@
 				<div class="col-sm-10">
 					<label class="control-label col-sm-2" for="login"></label>
 					<button type="submit" class="btn btn-primary">Sign In</button>
-					<a th:href="@{/register}"
+					<a th:href="@{/admin/register}"
 					   class= "to_register"
 					> Don't Have Account? <strong>Register</strong></a>
 				</div>

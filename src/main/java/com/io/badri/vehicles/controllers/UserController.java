@@ -21,20 +21,20 @@ public class UserController {
 	@Autowired
 	private UserService userService;	
 	
-	@PostMapping("/users/register")
+	@PostMapping("/admin/register")
 	//user is in th:object = 
 	public RedirectView addUser(@ModelAttribute("user") User user, RedirectAttributes redirectAtr) {
 		userService.addUser(user);
         
       // extra to send message 		
-		RedirectView rView = new RedirectView("/login", true);
+		RedirectView rView = new RedirectView("/admin/login", true);
 		
 		redirectAtr.addFlashAttribute("loginMessage", "You are registered successfully");
 			
 		return rView;
 	}
 	
-	@GetMapping("/users/showFormForUpdate")
+	@GetMapping("/admin/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("userId") int userId, Model model) {
 		   // get the user for that user id
             // System.out.println("update" + userId);
@@ -47,7 +47,7 @@ public class UserController {
 		   return "forms/login";
 	}
 	
-	@GetMapping("/users/deleteUser")
+	@GetMapping("/admin/deleteUser")
 	public String deleteUser(@RequestParam("userId") int userId, Model model) {
 		   System.out.println("delete" + userId);
 		   Optional<User> user = userService.getUserById(userId);		    
@@ -55,7 +55,6 @@ public class UserController {
 		   if(user !=null) {
 			   userService.deleteUser(userId);
 		   }
-		
-		return "redirect:/index";
+		return "redirect:/admin/index";
 	}
 }

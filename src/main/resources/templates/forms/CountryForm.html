@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th ="http://www.thymeleaf.org">
 <head>
-<title>Bootstrap Example</title>
+<title>Add Or Update the country</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -16,7 +16,7 @@
 	<div class="container">
 		<h2>Save Country</h2>
 		<form class="form-horizontal" th:object="${country}"
-			th:action="@{/countries/addNew}" method="post">
+			th:action="@{/admin/countries/addNew}" method="post">
 			
 			<!-- hidden input id -->
 			<input type="hidden" th:field="*{id}" class="form-control"

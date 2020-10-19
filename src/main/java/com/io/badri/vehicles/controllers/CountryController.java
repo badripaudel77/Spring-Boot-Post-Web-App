@@ -20,7 +20,7 @@ public class CountryController {
 	@Autowired
 	private CountryService countryService;
 	
-	@GetMapping("/countries")
+	@GetMapping("/admin/countries")
 	public String getCountries(Model model) {
 		List<Country> countryList = countryService.getCountries();
 		
@@ -28,7 +28,7 @@ public class CountryController {
 		return "Country";
 	}
 	
-	@GetMapping("/countries/showFormForAdd") 
+	@GetMapping("/admin/countries/showFormForAdd") 
 	public String showFormForAdd(Model model){
 		Country country = new Country();
 		
@@ -36,16 +36,16 @@ public class CountryController {
 	    return "forms/CountryForm";
 	}
 	
-	@PostMapping("/countries/addNew")
+	@PostMapping("/admin/countries/addNew")
 	//country is in th:object = 
 	public String addCountry(@ModelAttribute("country") Country country) {
 		countryService.addCountry(country);
         
 		//redirect to the list and prevent duplicate submission.
-		return "redirect:/countries";
+		return "redirect:/admin/countries";
 	}
 	
-	@GetMapping("/countries/showFormForUpdate")
+	@GetMapping("/admin/countries/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("countryId") int countryId, Model model) {
 		   // get the country for that country id
             // System.out.println("update" + countryId);
@@ -58,7 +58,7 @@ public class CountryController {
 		   return "forms/CountryForm";
 	}
 	
-	@GetMapping("/countries/deleteCountry")
+	@GetMapping("/admin/countries/deleteCountry")
 	public String deleteCountry(@RequestParam("countryId") int countryId, Model model) {
 		   System.out.println("delete" + countryId);
 		   Optional<Country> country = countryService.getCountryById(countryId);		    
@@ -67,6 +67,6 @@ public class CountryController {
 			   countryService.deleteCountry(countryId);
 		   }
 		
-		return "redirect:/countries";
+		return "redirect:/admin/countries";
 	}
 }

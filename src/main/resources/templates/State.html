@@ -73,7 +73,7 @@
 					<hr />
 				</h2>
 				<a type="button" class="btn btn-primary" 
-					    th:href="@{/states/showFormForAdd}"
+					    th:href="@{/admin/states/showFormForAdd}"
 			    >Add State</a>             
 				<!-- display states in table formate -->
 				<table class="table table-condensed">
@@ -99,8 +99,8 @@
 							<!-- edit delete actions icons -->
 							<td>
 							   <div class="btn btn-group">
-							        <a th:href="@{/states/showFormForUpdate(stateId=${state.id})}" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
-							        <a th:href="@{/states/deleteState(stateId=${state.id})}"  
+							        <a th:href="@{/admin/states/showFormForUpdate(stateId=${state.id})}" class="btn btn-primary"><i class="icon_pencil-edit"></i></a>
+							        <a th:href="@{/admin/states/deleteState(stateId=${state.id})}"  
 							           class="btn btn-danger"
 							           onclick="return confirm('are you sure to delete ?')"
 							        >
@@ -130,7 +130,6 @@
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
-
 
 </body>
 

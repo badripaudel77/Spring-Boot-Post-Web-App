@@ -67,7 +67,7 @@
 					<hr />
 				</h2>
 				<a type="button" class="btn btn-primary"
-					th:href="@{/countries/showFormForAdd}">Add Country</a>
+					th:href="@{/admin/countries/showFormForAdd}">Add Country</a>
 				<!-- display countries in table formate -->
 				<table class="table table-condensed">
 					<thead>
@@ -93,9 +93,9 @@
 							<td>
 								<div class="btn btn-group">
 									<a
-										th:href="@{/countries/showFormForUpdate(countryId=${country.id})}"
+										th:href="@{/admin/countries/showFormForUpdate(countryId=${country.id})}"
 										class="btn btn-primary"><i class="icon_pencil-edit"></i></a> <a
-										th:href="@{/countries/deleteCountry(countryId=${country.id})}"
+										th:href="@{/admin/countries/deleteCountry(countryId=${country.id})}"
 										class="btn btn-danger"
 										onclick="return confirm('are you sure to delete ?')">
 										<i class="icon_close_alt2"></i>

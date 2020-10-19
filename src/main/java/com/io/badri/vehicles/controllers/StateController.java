@@ -25,7 +25,7 @@ public class StateController {
 	@Autowired
 	private CountryService countryService;
 
-	@GetMapping("/states")
+	@GetMapping("/admin/states")
 	public String getStates(Model model) {
 		List<State> stateList = stateService.getStates();
 
@@ -33,7 +33,7 @@ public class StateController {
 		return "State";
 	}
 
-	@GetMapping("/states/showFormForAdd")
+	@GetMapping("/admin/states/showFormForAdd")
 	public String showFormForAdd(Model model) {
 
 		List<Country> countryList = countryService.getCountries();
@@ -46,15 +46,15 @@ public class StateController {
 		return "forms/StateForm";
 	}
 
-	@PostMapping("/states/addNew")
+	@PostMapping("/admin/states/addNew")
 	// state is in th:object =
 	public String addState(@ModelAttribute("state") State state, Model model) {
 		stateService.addState(state);
 		// redirect to the list and prevent duplicate submission.
-		return "redirect:/states";
+		return "redirect:/admin/states";
 	}
 
-	@GetMapping("/states/showFormForUpdate")
+	@GetMapping("/admin/states/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("stateId") int stateId, Model model) {
 		// get the state for that state id
 		// System.out.println("update" + stateId);
@@ -70,7 +70,7 @@ public class StateController {
 		return "forms/StateForm";
 	}
 
-	@GetMapping("/states/deleteState")
+	@GetMapping("/admin/states/deleteState")
 	public String deleteState(@RequestParam("stateId") int stateId, Model model) {
 		System.out.println("delete" + stateId);
 		Optional<State> state = stateService.getStateById(stateId);
@@ -78,6 +78,6 @@ public class StateController {
 		if (state != null) {
 			stateService.deleteState(stateId);
 		}
-		return "redirect:/states";
+		return "redirect:/admin/states";
 	}
 }

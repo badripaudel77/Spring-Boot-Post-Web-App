@@ -24,9 +24,8 @@ extends WebSecurityConfigurerAdapter  {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers(
-				"/login", 
-				"/register",
-				"/users/register",
+				"/admin/login", 
+				"/admin/register",				
 				"/normalusers/login",
 				"/normalusers/register",
 				"/resources/**", 
@@ -36,12 +35,13 @@ extends WebSecurityConfigurerAdapter  {
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
-		.loginPage("/login").permitAll()
+		.loginPage("/admin/login").permitAll()
+		.defaultSuccessUrl("/admin")
 		.and()
 		.logout().invalidateHttpSession(true)
 		.clearAuthentication(true)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/login").permitAll();
+		.logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
+		.logoutSuccessUrl("/admin/login").permitAll();
 	}
 	
 //	@Bean

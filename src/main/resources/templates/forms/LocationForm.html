@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Bootstrap Example</title>
+<title>Add or Update the Location.</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,9 +14,9 @@
 <body>
 
 	<div class="container">
-		<h2>Save Locations</h2>
+		<h2>Save Location</h2>
 		<form class="form-horizontal" th:object="${location}"
-			th:action="@{/locations/addNew}" method="post">
+			th:action="@{/admin/locations/addNew}" method="post">
 
 			<!-- hidden input id -->
 			<input type="hidden" required th:field="*{id}" class="form-control" name="id"
