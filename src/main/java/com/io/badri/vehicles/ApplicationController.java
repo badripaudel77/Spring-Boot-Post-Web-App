@@ -9,18 +9,23 @@ public class ApplicationController {
 	/*
 	 * mapping for home admin page /index
 	 */
+	
+	@GetMapping("/")
+	public String redirectToPublicPage() {
+		return "redirect:/posts";
+	}
+	
 	@GetMapping("/admin")
 	public String showHomePage() {
 		return "index"; // redirects to index.html from /template/index.html
 	}
 	
-	/*
-	@GetMapping("/admin/index")
+	
+	@GetMapping("/index")
 	public String homePage() {
 		return "index"; // redirects to index.html from /template/index.html
 	}
-	*/
-	
+		
 	@GetMapping("/admin/register")
 	public String registerPage() {
 		return "forms/register"; // redirects to index.html from /template/index.html

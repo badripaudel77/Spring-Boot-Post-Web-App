@@ -25,7 +25,7 @@ public class StateController {
 	@Autowired
 	private CountryService countryService;
 
-	@GetMapping("/admin/states")
+	@GetMapping("/states")
 	public String getStates(Model model) {
 		List<State> stateList = stateService.getStates();
 
@@ -51,7 +51,7 @@ public class StateController {
 	public String addState(@ModelAttribute("state") State state, Model model) {
 		stateService.addState(state);
 		// redirect to the list and prevent duplicate submission.
-		return "redirect:/admin/states";
+		return "redirect:/states";
 	}
 
 	@GetMapping("/admin/states/showFormForUpdate")
@@ -78,6 +78,6 @@ public class StateController {
 		if (state != null) {
 			stateService.deleteState(stateId);
 		}
-		return "redirect:/admin/states";
+		return "redirect:/states";
 	}
 }

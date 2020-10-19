@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add the Post Now ✔</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+   <div class="jumbotron">
+       <h1>Create One more Post</h1>  
+   </div> 
+   <h2>Save State</h2>
+		<form class="form-horizontal" th:object="${post}"
+			th:action="@{/posts/addNew}" method="post">
+
+			<!-- hidden input id -->
+			<input type="hidden" readonly th:field="*{id}" class="form-control" name="id"
+				id="id" />
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="capital">Title:</label>
+				<div class="col-sm-10">
+					<input type="text" required th:field="*{title}" class="form-control"
+						name="title" id="title">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="code">Photo URL:</label>
+				<div class="col-sm-10">
+					<input type="text" required th:field="*{photoURL}" class="form-control"
+						name="photoURL" id="photoURL">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="country">Location:</label>
+				<div class="col-sm-10">
+
+					<!-- <input type="text" th:field="*{countryid}" class="form-control"
+						name="countryid" id="countryid"> --> 
+					
+					<!-- th:field="*{countryid}" -->	
+					<select  required class="form-control" th:field="*{location}" name = "location" id="location">
+						<option value="" >Select Location : </option>
+						<option th:each = "country : ${countries}"
+					        	th:value="${country.description}"
+					        	th:text= "${country.description}">
+					    </option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-10">
+					<label class="control-label col-sm-2" for="details"></label>
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</form>    
+ </div>
+
+</body>
+</html>

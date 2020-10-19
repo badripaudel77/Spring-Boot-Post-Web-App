@@ -1,21 +1,16 @@
 package com.io.badri.vehicles.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 //This user entity is for the admin user
 
 @Entity
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Table(name = "users")
 public class User {
 		
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +21,6 @@ public class User {
 	private String username;
 	private String password;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn( name = "user_id")
-	private List<Post> posts;
 	
 	public User() {}
 
@@ -80,20 +72,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
 
-	public void add(Post product) {
-		if (posts == null) {
-			posts = new ArrayList<Post>();
-		}
-		posts.add(product);
-
-		product.setUser(this); // this == User, bidirectional relationship [if needed, here posts of user no
-							// longer exist without User ]
-	}
 
 	@Override
 	public String toString() {

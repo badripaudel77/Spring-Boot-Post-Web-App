@@ -29,6 +29,8 @@ extends WebSecurityConfigurerAdapter  {
 				"/normalusers/login",
 				"/normalusers/register",
 				"/resources/**", 
+				"/static/**",
+				"/templates/**",
 				"/css/**", 
 				"/fonts/**", 
 				"/img/**").permitAll()

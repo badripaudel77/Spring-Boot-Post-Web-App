@@ -29,7 +29,7 @@ public class LocationController {
 	@Autowired
 	private StateService stateService;
 
-	@GetMapping("/admin/locations")
+	@GetMapping("/locations")
 	public String getLocations(Model model) {
 		List<Location> locationList = locationService.getLocations();
 
@@ -57,7 +57,7 @@ public class LocationController {
 	public String addLocation(@ModelAttribute("location") Location location, Model model) {
 		locationService.addLocation(location);
 		// redirect to the list and prevent duplicate submission.
-		return "redirect:/admin/locations";
+		return "redirect:/locations";
 	}
 
 	@GetMapping("/admin/locations/showFormForUpdate")
@@ -86,6 +86,6 @@ public class LocationController {
 		if (location != null) {
 			locationService.deleteLocation(locationId);
 		}
-		return "redirect:/admin/locations";
+		return "redirect:/locations";
 	}
 }

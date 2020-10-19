@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 //@NoArgsConstructor
 //@AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Table(name = "countries")
 public class Country {
 	
 	@Id
@@ -32,6 +34,11 @@ public class Country {
 	@OneToMany(mappedBy="country")
 	private List<State> states;
 	
+//	//There may be multiple posts from the same country
+//	@JsonManagedReference
+//	@OneToMany(mappedBy="country")
+//	private List<Post> posts;
+	
 	public Country() {}
 
 	public Country(Integer id, String code, String capital, String description, String nationality, String continent,
@@ -43,6 +50,7 @@ public class Country {
 		this.nationality = nationality;
 		this.continent = continent;
 		this.states = states;
+		//this.posts = posts;
 	}
 
 	public Integer getId() {
@@ -101,10 +109,11 @@ public class Country {
 		this.states = states;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Country [id=" + id + ", code=" + code + ", capital=" + capital + ", description=" + description
-//				+ ", nationality=" + nationality + ", continent=" + continent + ", states=" + states + "]";
+//	public List<Post> getPosts() {
+//		return posts;
 //	}
-	
+//
+//	public void setPosts(List<Post> posts) {
+//		this.posts = posts;
+//	}
 }

@@ -26,6 +26,4 @@ public class MyUserDetailsService implements UserDetailsService {
 		//return user principal. Wraps a user
 		return new UserPrincipal(user);
 	}
-
-	
 }

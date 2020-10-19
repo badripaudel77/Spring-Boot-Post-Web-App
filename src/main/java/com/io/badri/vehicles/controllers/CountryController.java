@@ -20,7 +20,7 @@ public class CountryController {
 	@Autowired
 	private CountryService countryService;
 	
-	@GetMapping("/admin/countries")
+	@GetMapping("/countries")
 	public String getCountries(Model model) {
 		List<Country> countryList = countryService.getCountries();
 		
@@ -42,7 +42,7 @@ public class CountryController {
 		countryService.addCountry(country);
         
 		//redirect to the list and prevent duplicate submission.
-		return "redirect:/admin/countries";
+		return "redirect:/countries";
 	}
 	
 	@GetMapping("/admin/countries/showFormForUpdate")
@@ -67,6 +67,6 @@ public class CountryController {
 			   countryService.deleteCountry(countryId);
 		   }
 		
-		return "redirect:/admin/countries";
+		return "redirect:/countries";
 	}
 }
