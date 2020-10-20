@@ -12,7 +12,7 @@ import com.io.badri.vehicles.services.UserService;
 public class ApplicationController {
 
 	/*
-	 * mapping for home admin page /index
+	 * mapping for home admin page /index route.
 	 */
 	@Autowired
 	private UserService userService;
