@@ -24,12 +24,13 @@ public class PostController {
 
 	@Autowired
 	private CountryService countryService;
-
+	
 	@GetMapping("/posts")
 	public String getPosts(Model model) {
 		List<Post> postList = postService.getPosts();
 
 		model.addAttribute("posts", postList);
+
 		return "Post";
 	}
 

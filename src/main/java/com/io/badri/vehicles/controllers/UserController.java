@@ -23,15 +23,16 @@ public class UserController {
 	
 	@PostMapping("/admin/register")
 	//user is in th:object = 
-	public RedirectView addUser(@ModelAttribute("user") User user, RedirectAttributes redirectAtr) {
+	public String addUser(@ModelAttribute("user") User user, RedirectAttributes redirectAtr) {
 		userService.addUser(user);
         
       // extra to send message 		
-		RedirectView rView = new RedirectView("/admin/login", true);
-		
-		redirectAtr.addFlashAttribute("loginMessage", "You are registered successfully");
+      //RedirectView rView = new RedirectView("/admin/login", true);		
+	  //redirectAtr.addFlashAttribute("loginMessage", "You are registered successfully");
 			
-		return rView;
+      //return rView;
+	
+	  return "redirect:/admin";
 	}
 	
 	@GetMapping("/admin/showFormForUpdate")

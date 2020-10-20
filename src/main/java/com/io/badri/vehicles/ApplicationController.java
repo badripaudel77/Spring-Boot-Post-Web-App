@@ -1,7 +1,12 @@
 package com.io.badri.vehicles;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.io.badri.vehicles.services.PostService;
+import com.io.badri.vehicles.services.UserService;
 
 @Controller
 public class ApplicationController {
@@ -9,20 +14,41 @@ public class ApplicationController {
 	/*
 	 * mapping for home admin page /index
 	 */
+	@Autowired
+	private UserService userService;
+	
+	@Autowired 
+	private PostService postService;
+	
+	public int getUsersCount() {
+		return userService.countUsers();
+	}
+	
+	private int getPostCounts() {
+		return postService.countPosts();
+	}
 	
 	@GetMapping("/")
-	public String redirectToPublicPage() {
+	public String redirectToPublicPage(Model model) {
 		return "redirect:/posts";
 	}
 	
 	@GetMapping("/admin")
-	public String showHomePage() {
+	public String showHomePage(Model model) {
+	
+		model.addAttribute("usersCount", getUsersCount());
+		model.addAttribute("postsCount", getPostCounts());
+
 		return "index"; // redirects to index.html from /template/index.html
 	}
 	
 	
 	@GetMapping("/index")
-	public String homePage() {
+	public String homePage(Model model) {
+		
+		model.addAttribute("usersCount", getUsersCount());
+		model.addAttribute("postsCount", getPostCounts());
+		
 		return "index"; // redirects to index.html from /template/index.html
 	}
 		

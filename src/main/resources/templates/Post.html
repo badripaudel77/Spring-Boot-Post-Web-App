@@ -68,7 +68,8 @@
 			 <div th:each="post : ${posts}">
                  <div style = "border-bottom : 3px solid orange; margin-bottom : 10px;">
 					<div class="card" style="width: 80%;">					
-                     <img th:src="${post.photoURL}" class="card-img-top" alt="...">	
+                     <img th:src="${post.photoURL}" class="card-img-top" alt="..."
+                       style = "max-height : 400px; object-fit : contain;">	
 						<div class="card-body">
 							<h1 class="card-title" th:text = "${post.title}"></h1>
 						     <div style = "display : flex;">

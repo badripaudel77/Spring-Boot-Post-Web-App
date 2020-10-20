@@ -17,7 +17,8 @@ public class PostService {
 	
 	//get all posts
 	public List<Post> getPosts() {
-		return postRepository.findAll(); 
+//		return postRepository.findAll(); 
+		return postRepository.findAllByOrderByIdDesc();
 	}
 
 	//save new post to the database
@@ -36,5 +37,9 @@ public class PostService {
 	     System.out.println("post from postservice  " + postRepository.findById(postId));
 
 		postRepository.deleteById(postId);
+	}
+
+	public int countPosts() {
+		return (int) postRepository.count();
 	}
 }

@@ -33,7 +33,7 @@
 <body>
 
 	<div class="container">
-		<h2>Create Your Account First(Admin)</h2>
+		<h2>Add An Admin</h2>
 		<form class="form-horizontal"
 			th:action="@{/admin/register}" method="post">
 			
@@ -82,10 +82,10 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<label class="control-label col-sm-2"></label>
-					<button type="submit" class="btn btn-primary">Create Account</button>
-						<a th:href="@{/admin/login}"
+					<button type="submit" class="btn btn-primary">Create Admin</button>
+						<a th:href="@{/admin}"
 					   class= "to_login"
-					> Already Have Account? <strong>Login</strong></a>
+					> Already Have Account? <strong>Cancel</strong></a>
 				</div>
 			</div>
 		</form>

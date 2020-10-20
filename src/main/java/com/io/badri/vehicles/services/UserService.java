@@ -39,4 +39,8 @@ public class UserService {
 
 		userRepository.deleteById(userId);
 	}
+	
+	public int countUsers() {
+		return (int) userRepository.count();
+	}
 }
