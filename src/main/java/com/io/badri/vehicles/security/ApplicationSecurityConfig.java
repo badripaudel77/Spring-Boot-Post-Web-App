@@ -24,7 +24,9 @@ extends WebSecurityConfigurerAdapter  {
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers(
-				"/admin/login", 				
+				"/admin/login",
+				"/posts",
+				"/",
 				"/resources/**", 
 				"/static/**",
 				"/templates/**",

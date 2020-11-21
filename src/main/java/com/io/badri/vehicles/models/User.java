@@ -1,9 +1,12 @@
 package com.io.badri.vehicles.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //This user entity is for the admin user
@@ -21,6 +24,9 @@ public class User {
 	private String username;
 	private String password;
 	
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts;
 	
 	public User() {}
 
@@ -72,12 +78,21 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
-				+ ", password=" + password + "]";
+				+ ", password=" + password + ", posts=" + posts + "]";
 	}
+
 	
 }

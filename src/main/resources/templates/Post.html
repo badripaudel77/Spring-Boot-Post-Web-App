@@ -47,9 +47,14 @@
  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" th:href="@{/admin}">Post App</a>
+        <a class="navbar-brand" th:href="@{/}">Post App</a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
+      
+       <!-- see the details of the loggedin user  -->
+      	<!-- <span th:text="${#authentication.getPrincipal().getUsername()}"></span> -->				
+      
+      <ul class="nav navbar-nav navbar-right" 
+         sec:authorize="isAuthenticated()">
         <li><a th:href="@{/posts/showFormForAdd}"> <button 
            style = "background-color : purple; color : white;" class = "btn btn-alert" >Add Post</button></a></li>
       </ul>
@@ -63,7 +68,7 @@
 						</h3>
 				<!-- page start-->
 				<!-- page start-->
-				<!--  Page content goes here -->
+				<!-- Page content goes here -->
 	
 			 <div th:each="post : ${posts}">
                  <div style = "border-bottom : 3px solid orange; margin-bottom : 10px;">
@@ -81,7 +86,7 @@
 						   </div> 
 						</div>
 					</div>
-					<div class="btn btn-group">
+					<div sec:authorize = "isAuthenticated()" class="btn btn-group">
 							<a th:href="@{/posts/showFormForUpdate(postId=${post.id})}"
 								class="btn btn-primary"><i class="icon_pencil-edit"></i></a> 
 								

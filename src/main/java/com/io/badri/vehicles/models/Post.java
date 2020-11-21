@@ -2,10 +2,14 @@ package com.io.badri.vehicles.models;
 
 import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,15 +21,14 @@ public class Post {
 	private int id;
 	private String title; // title of the post
 	private String location = "Unknown"; // location of the post
+
+    @Column(nullable = true, length = 64)
 	private String photoURL;
 	private Instant postedAt = Instant.now();
 
-//	@JsonBackReference
-//	@ManyToOne
-//	@JoinColumn(name = "countryid", insertable = false, updatable = false)
-//	private Country country;
-//
-//	private Integer countryid;
+	@ManyToOne()
+	@JoinColumn( name = "user_id")
+	private User user;
 
 	public Post() {
 	}
@@ -36,7 +39,6 @@ public class Post {
 		this.location = location;
 		this.photoURL = photoURL;
 		this.postedAt = postedAt;
-		//this.countryid = countryid;
 	}
 
 	public int getId() {
@@ -78,8 +80,6 @@ public class Post {
 	public void setPostedAt(Instant postedAt) {
 		this.postedAt = postedAt;
 	}
-	
-	
 
 //	public Country getCountry() {
 //		return country;
@@ -97,9 +97,18 @@ public class Post {
 //		this.countryid = countryid;
 //	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", title=" + title + ", location=" + location + ", photoURL=" + photoURL
-				+ ", postedAt=" + postedAt + "]";
+				+ ", postedAt=" + postedAt + ", user=" + user + "]";
 	}
+
 }

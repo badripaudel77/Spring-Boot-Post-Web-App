@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.io.badri.vehicles.models.Country;
 import com.io.badri.vehicles.models.Post;
@@ -18,6 +19,9 @@ import com.io.badri.vehicles.services.PostService;
 
 @Controller
 public class PostController {
+	
+  // specify the paths to the image upload 
+  public static String imgUploadDirPath = "E:\\Spring_Boot__Vehicles_App\\src\\main\\resources\\static\\img\\" + "uploads";
 
 	@Autowired
 	private PostService postService;
@@ -50,6 +54,11 @@ public class PostController {
 	@PostMapping("/posts/addNew")
 	// post is in th:object =
 	public String addPost(@ModelAttribute("post") Post post, Model model) {
+		
+		//String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
+		
+		//post.setPhotoURL(originalFilename);
+		
 		postService.addPost(post);
 		// redirect to the list and prevent duplicate submission.
 		return "redirect:/posts";
