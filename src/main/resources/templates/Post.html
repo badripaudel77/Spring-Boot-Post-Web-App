@@ -44,7 +44,7 @@
 	<!-- container section start -->
 <section id="container" class="">
 		
- <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" th:href="@{/}">Post App</a>
@@ -81,6 +81,8 @@
 						       <i class="fa fa-map-marker" style="font-size:30px;color:green;"></i>
 						       &nbsp;
 						       <p style="font-weight : bold;" th:text = "${post.location}"></p>
+							   &nbsp; &nbsp;
+							   <b>Creator</b>: &nbsp; <p style="font-weight : bold;" th:text = "${#authentication.getPrincipal()}"></p>
 							   &nbsp; &nbsp;
 							   <span>Posted At &nbsp;</span><p class="card-text" th:text = "${post.postedAt}"></p> 
 						   </div> 

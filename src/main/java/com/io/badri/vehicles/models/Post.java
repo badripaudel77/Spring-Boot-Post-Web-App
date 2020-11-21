@@ -110,5 +110,4 @@ public class Post {
 		return "Post [id=" + id + ", title=" + title + ", location=" + location + ", photoURL=" + photoURL
 				+ ", postedAt=" + postedAt + ", user=" + user + "]";
 	}
-
 }
