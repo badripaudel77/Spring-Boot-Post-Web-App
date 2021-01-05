@@ -1,2 +1,2 @@
-# Sprinng_Boot_Vehicles_Management
-Fully Functional Vehicle Management Web Application using Spring boot. 
+# Sprinng_Bootapp
+Fully Functional small post posting, having CRUD functionalities Web Application using Spring boot with spring security implemented. 
