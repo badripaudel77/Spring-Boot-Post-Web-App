@@ -4,4 +4,3 @@ Fully Functional small post posting, having CRUD functionalities Web Application
 
 ## Checkout the master branch for the code. 
 
-![ScreenShot](https://badripaudel.netlify.app/images/postapp.PNG)
